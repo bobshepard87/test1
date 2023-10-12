@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Time Zone Viewer</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin-top: 50px;
+        }
+
+        select {
+            padding: 10px;
+            font-size: 16px;
+        }
+    </style>
+</head>
+<body>
+
+<h2>Select a Time Zone</h2>
+<select id="timezoneSelect">
+    <option value="UTC">UTC</option>
+    <option value="America/New_York">New York (Eastern Time)</option>
+    <option value="America/Los_Angeles">Los Angeles (Pacific Time)</option>
+    <option value="Europe/London">London</option>
+    <option value="Asia/Tokyo">Tokyo</option>
+    <option value="Australia/Sydney">Sydney</option>
+    <!-- You can add more time zones here -->
+</select>
+
+<h3>Current Time:</h3>
+<p id="currentTime">Loading...</p>
+
+<script>
+    function updateTime() {
+        const timezone = document.getElementById("timezoneSelect").value;
+        const date = new Date().toLocaleString("en-US", { timeZone: timezone });
+        document.getElementById("currentTime").textContent = date;
+    }
+
+    document.getElementById("timezoneSelect").addEventListener("change", updateTime);
+    
+    // Initialize
+    updateTime();
+</script>
+
+</body>
+</html>
